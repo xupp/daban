@@ -2,7 +2,8 @@
 require_once __DIR__ . '/lib/WxPay.Api.php';
 
 class WXPay {
-    function index() {
+    
+    public function index() {
         //         初始化值对象
         $input = new WxPayUnifiedOrder();
         //         文档提及的参数规范：商家名称-销售商品类目
@@ -42,10 +43,10 @@ class WXPay {
         return $parameters;
     }
 
-    private function getSession() {die;
+    private function getSession() {
         $input = file_get_contents('php://input');
         $data = explode('=',$input);
-        $code = $data[1];var_dump($code);
+        $code = $data[1];
         $url = 'https://api.weixin.qq.com/sns/jscode2session?appid='.WxPayConfig::APPID.'&secret='.WxPayConfig::APPSECRET.'&js_code='.$code.'&grant_type=authorization_code';
         $response = json_decode(file_get_contents($url));var_dump($response);die;
         return $response;

@@ -52,6 +52,7 @@ class WXPay {
 
     private function _postData(){
     	$post = file_get_contents('php://input');
+    	$post = urldecode($post);
     	$arr = explode('&', $post);
 		$result = [];
 		foreach ($arr as $key => &$value) {

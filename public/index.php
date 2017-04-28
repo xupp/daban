@@ -42,10 +42,10 @@ class WXPay {
         return $parameters;
     }
 
-    private function getSession() {
+    private function getSession() {die;
         $input = file_get_contents('php://input');
-        $data = split('=',$input);
-        $code = $data[1];var_dump($code);die;
+        $data = explode('=',$input);
+        $code = $data[1];var_dump($code);
         $url = 'https://api.weixin.qq.com/sns/jscode2session?appid='.WxPayConfig::APPID.'&secret='.WxPayConfig::APPSECRET.'&js_code='.$code.'&grant_type=authorization_code';
         $response = json_decode(file_get_contents($url));var_dump($response);die;
         return $response;

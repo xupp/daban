@@ -2,7 +2,7 @@
 require_once __DIR__ . '/lib/WxPay.Api.php';
 
 class WXPay {
-    
+
     public function index() {
         //         初始化值对象
         $input = new WxPayUnifiedOrder();
@@ -44,11 +44,14 @@ class WXPay {
     }
 
     private function getSession() {
-        $input = file_get_contents('php://input');
+        $input = file_get_contents('php://input');var_dump($input);
         $data = explode('=',$input);
-        $code = $data[1];
+        $code = $data[1];var_dump($code);
         $url = 'https://api.weixin.qq.com/sns/jscode2session?appid='.WxPayConfig::APPID.'&secret='.WxPayConfig::APPSECRET.'&js_code='.$code.'&grant_type=authorization_code';
-        $response = json_decode(file_get_contents($url));var_dump($response);die;
+        var_dump($url);
+        $response = json_decode(file_get_contents($url));
+        var_dump($response);
+        die;
         return $response;
     }
 }

@@ -13,7 +13,7 @@ class WXPay {
         $input->SetOut_trade_no($result['order_sn']);
         //         费用应该是由小程序端传给服务端的，在用户下单时告知服务端应付金额，demo中取值是1，即1分钱
         $input->SetTotal_fee($result['order_amount']*100);
-        $input->SetNotify_url("https://daban2017.leanapp.cn/notify.php");
+        $input->SetNotify_url("https://shizhencaiyuan.com/public/notify.php");
         $input->SetTrade_type("JSAPI");
         //         由小程序端传给服务端
         $input->SetOpenid($this->_getSession($result['code'])->openid);

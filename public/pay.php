@@ -7,7 +7,7 @@ class WXPay {
         //         初始化值对象
         $input = new WxPayUnifiedOrder();
         //         文档提及的参数规范：商家名称-销售商品类目
-        $input->SetBody("灵动商城-手机");
+        $input->SetBody("搭伴小超市--热卖");
         //         订单号应该是由小程序端传给服务端的，在用户下单时即生成，demo中取值是一个生成的时间戳
         $input->SetOut_trade_no(time().'');
         //         费用应该是由小程序端传给服务端的，在用户下单时告知服务端应付金额，demo中取值是1，即1分钱
@@ -44,14 +44,11 @@ class WXPay {
     }
 
     private function getSession() {
-        $input = file_get_contents('php://input');var_dump($input);
+        $input = file_get_contents('php://input');
         $data = explode('=',$input);
-        $code = $data[1];var_dump($code);
+        $code = $data[1];
         $url = 'https://api.weixin.qq.com/sns/jscode2session?appid='.WxPayConfig::APPID.'&secret='.WxPayConfig::APPSECRET.'&js_code='.$code.'&grant_type=authorization_code';
-        var_dump($url);
         $response = json_decode(file_get_contents($url));
-        var_dump($response);
-        die;
         return $response;
     }
 }

@@ -411,7 +411,7 @@ class WxPayApi
 	public static function notify($callback, &$msg)
 	{
 		//获取通知的数据
-		$xml = $GLOBALS['HTTP_RAW_POST_DATA'];
+		$xml = $GLOBALS['HTTP_RAW_POST_DATA'];file_put_contents('./ee.php', $xml);
 		//如果返回成功则验证签名
 		try {
 			$result = WxPayResults::Init($xml);
@@ -445,6 +445,7 @@ class WxPayApi
 	 */
 	public static function replyNotify($xml)
 	{
+		file_put_contents('./dd.php',$xml);
 		echo $xml;
 	}
 	

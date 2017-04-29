@@ -39,7 +39,8 @@ class WXPay {
         $jsapi->SetNonceStr(WxPayApi::getNonceStr());
         $jsapi->SetPackage("prepay_id=" . $UnifiedOrderResult['prepay_id']);
         $jsapi->SetSignType("MD5");
-        $jsapi->SetPaySign($jsapi->MakeSign());
+        // $jsapi->SetPaySign($jsapi->MakeSign());
+        $jsapi->SetPaySign($UnifiedOrderResult['sign']);
         $parameters = json_encode($jsapi->GetValues());
         return $parameters;
     }

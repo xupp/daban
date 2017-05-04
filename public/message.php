@@ -19,7 +19,7 @@ class Message {
             $signature = $_GET['signature'];
             $timestamp = $_GET['timestamp'];
             $nonce = $_GET['nonce'];
-            $token = 'xiaochengxu';
+            $token = self::$config['token'];
             $tmpArr = [$token,$timestamp,$nonce];
             sort($tmpArr, SORT_STRING);
             $tmpStr = implode($tmpArr);
@@ -47,7 +47,7 @@ class Message {
     public function getAccessToken(){
         //缓存access_token
         $cachename = md5(self::$config['appId'].self::$config['appSecret']);
-        $file = __DIR__.'/cache/'.$cachename.'.php';
+         $file = __DIR__.'/cache/'.$cachename.'.php';
 
         if(is_file($file) && filemtime($file) + 7000 > time()){
             $data = include $file;
@@ -106,22 +106,10 @@ $config = [
 ];
 
 $message = new Message($config);
-/*$url = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='.$message->getAccessToken();
-	$data = '{
-			    "touser":"oousa0WLjAFbOY1fM_SFZjpuK1S8",
-			    "msgtype":"text",
-			    "text":
-			    {
-			         "content":"客服稍后会与您联系，谢谢~！"
-			    }
-			}';
-	$message->curl($url,$data);	die;
-*/
-
 $message->valid();
 
 
-/*$object = $message->getObject();
+$object = $message->getObject();
 if($object->MsgType == 'text'){
 	$url = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='.$message->getAccessToken();
 	$data = '{
@@ -133,4 +121,4 @@ if($object->MsgType == 'text'){
 			    }
 			}';
 	$message->curl($url,$data);		
-}*/
+}

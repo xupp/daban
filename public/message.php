@@ -52,12 +52,12 @@ class Message {
         if(is_file($file) && filemtime($file) + 7000 > time()){
             $data = include $file;
         }else{
-            $url = $this->apiUrl.'/cgi-bin/token?grant_type=client_credential&appid='.self::$config['appId'].'&secret='.self::$config['appSecret'];
+            $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.self::$config['appId'].'&secret='.self::$config['appSecret'];
             $data = $this->curl($url);
             if(isset($data['errcode'])){
                 return false;
             }
-            file_put_contents($file,"<?php return \r\n".var_export($data,true).";\r\n?>");
+            /*file_put_contents($file,"<?php return \r\n".var_export($data,true).";\r\n?>");*/
         }
         return $data['access_token'];
     }
@@ -106,10 +106,22 @@ $config = [
 ];
 
 $message = new Message($config);
+/*$url = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='.$message->getAccessToken();
+	$data = '{
+			    "touser":"oousa0WLjAFbOY1fM_SFZjpuK1S8",
+			    "msgtype":"text",
+			    "text":
+			    {
+			         "content":"客服稍后会与您联系，谢谢~！"
+			    }
+			}';
+	$message->curl($url,$data);	die;
+*/
+
 $message->valid();
 
 
-$object = $message->getObject();
+/*$object = $message->getObject();
 if($object->MsgType == 'text'){
 	$url = 'https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token='.$message->getAccessToken();
 	$data = '{
@@ -121,4 +133,4 @@ if($object->MsgType == 'text'){
 			    }
 			}';
 	$message->curl($url,$data);		
-}
+}*/

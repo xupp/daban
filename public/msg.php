@@ -1,7 +1,7 @@
 <?php
 
 
-define("TOKEN","xiaochengxu");
+define("TOKEN","daban");
 $wechatObj = new wechatAPI();
 $wechatObj->isValid();
 class wechatAPI

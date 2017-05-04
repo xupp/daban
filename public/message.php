@@ -102,7 +102,7 @@ class Message {
 $config = [
 	'appId' => 'wx38002adc825edc81',
 	'appSecret' => '9dc5b950c4ec8d8efffa5b7acb40702e',
-	'token' => 'xiaochengxu'
+	'token' => 'daban'
 ];
 
 $message = new Message($config);

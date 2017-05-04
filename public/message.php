@@ -6,7 +6,7 @@ class Message {
 	private static $config = [];//配置项
 	private $object;	
 
-	public function __construct(array $config = []){
+	public function __construct(array $config){
         if(!empty($config)){
             self::$config = $config;
         }
@@ -34,10 +34,8 @@ class Message {
     //获取并解析用户传过来的数据
     private function parsePostRequestData(){
         $postStr = isset($GLOBALS['HTTP_RAW_POST_DATA']) && !empty($GLOBALS['HTTP_RAW_POST_DATA']) ? $GLOBALS['HTTP_RAW_POST_DATA'] : file_get_contents("php://input");
-        if($this->xml_parse($postStr)){
-            if(!empty($postStr)){
-                return simplexml_load_string($postStr,'SimpleXMLElement',LIBXML_NOCDATA);
-            }
+        if(!empty($postStr)){
+            return simplexml_load_string($postStr,'SimpleXMLElement',LIBXML_NOCDATA);
         }
     }
 

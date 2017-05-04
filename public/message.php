@@ -19,7 +19,7 @@ class Message {
             $signature = $_GET['signature'];
             $timestamp = $_GET['timestamp'];
             $nonce = $_GET['nonce'];
-            $token = self::$config['token'];
+            $token = 'xiaochengxu';
             $tmpArr = [$token,$timestamp,$nonce];
             sort($tmpArr, SORT_STRING);
             $tmpStr = implode($tmpArr);

@@ -27,13 +27,13 @@ class WxPayConfig
 	// const KEY = '12345678123456781234567812345678';
 	// const APPSECRET = '9dc5b950c4ec8d8efffa5b7acb40702e';
 	//微信公众号身份的唯一标识。审核通过后，在微信发送的邮件中查看
-	const APPID = 'wx2a11c0fe76dea693';
+	const APPID = 'wxa5937d1a8d52fcba';
 	//受理商ID，身份标识
 	const MCHID = '1487939362';
 	//商户支付密钥Key。审核通过后，在微信发送的邮件中查看
 	const KEY = '12345678abcdefgh12345678abcdefgh';
 	//JSAPI接口中获取openid，审核后在公众平台开启开发模式后可查看
-	const APPSECRET = '629acd7ca12f5d3d74e0a0b1e1ba42f8';
+	const APPSECRET = '464a8d21fb56d93a6b80dc2d49ec52d7';
 	
 	//=======【证书路径设置】=====================================
 	/**
